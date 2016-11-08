@@ -7,25 +7,11 @@ services:
     build:
       context: ./data-harness
       dockerfile: Dockerfile
-    #volumes_from:
-    #  - data_vol
+    volumes_from:
+      - data-vol
     ports:
       - "9001:80"
     environment:
       FOO: 'bar'
-    #links: 
-    #  - "mysql:mysql"
-  
-  # MySQL Database
-  #mysql:
-  #  image: mariadb:5.5 #mysql:5.7
-  #  ports:
-  #    - "3306:3306"
-  #  volumes:
-  #    - ./mysql:/var/lib/mysql
-  #  environment:
-  #    MYSQL_ROOT_PASSWORD: enloop
-  #    MYSQL_DATABASE: enloop
-  #    MYSQL_USER: enloop
-  #    MYSQL_PASSWORD: enloop
-
+ data-vol:
+    image: bitcalculus/lahmanpitcherdata:latest
